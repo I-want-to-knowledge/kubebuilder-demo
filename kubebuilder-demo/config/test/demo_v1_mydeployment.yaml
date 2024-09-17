@@ -1,0 +1,24 @@
+apiVersion: demo.my.domain/v1
+kind: MyDeployment
+metadata:
+  labels:
+    app.kubernetes.io/name: kubebuilder-demo
+    app.kubernetes.io/managed-by: kustomize
+  name: mydeployment-sample
+  namespace: default
+spec:
+  replicas: 0
+  labelSelector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+#      labels:
+#        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
